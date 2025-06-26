@@ -2,7 +2,10 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode({800, 800}), "moving_stuff_modify");
+    sf::ContextSettings settings;
+    settings.antiAliasingLevel = 8;
+
+    sf::RenderWindow window(sf::VideoMode({800, 800}), "moving_stuff_modify", sf::Style::Titlebar | sf::Style::Close, sf::State::Windowed, settings);
     window.setFramerateLimit(60);
 
     sf::Clock timer;
@@ -11,17 +14,17 @@ int main()
     // circle 0
     sf::CircleShape circle0(100.f);
     circle0.setFillColor(sf::Color::Transparent);
-    circle0.setOutlineThickness(5.f);
+    circle0.setOutlineThickness(-5.f);
     circle0.setOutlineColor(sf::Color::Red);
     // circle 1
     sf::CircleShape circle1(100.f);
     circle1.setFillColor(sf::Color::Transparent);
-    circle1.setOutlineThickness(5.f);
+    circle1.setOutlineThickness(-5.f);
     circle1.setOutlineColor(sf::Color::Green);
     // circle 2
     sf::CircleShape circle2(100.f);
     circle2.setFillColor(sf::Color::Transparent);
-    circle2.setOutlineThickness(5.f);
+    circle2.setOutlineThickness(-5.f);
     circle2.setOutlineColor(sf::Color::Blue);
 
     while (window.isOpen())

@@ -2,7 +2,10 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode({600, 200}), "positioning_stuff");
+    sf::ContextSettings settings;
+    settings.antiAliasingLevel = 8; // adds antialiasing
+
+    sf::RenderWindow window(sf::VideoMode({600, 200}), "positioning_stuff", sf::Style::Titlebar | sf::Style::Close, sf::State::Windowed, settings);
     window.setFramerateLimit(60);
 
     // circle
@@ -22,7 +25,7 @@ int main()
     hexagon.setFillColor(sf::Color(77, 155, 230));
     hexagon.setOrigin({100.f, 100.f});
     hexagon.setPosition({500.f, 100.f});
-    
+
     while (window.isOpen())
     {
         while (const std::optional event = window.pollEvent())
@@ -35,9 +38,9 @@ int main()
         window.draw(circle);
         window.draw(triangle);
         window.draw(hexagon);
-        circle.rotate(sf::degrees(2));
-        triangle.rotate(sf::degrees(2));
-        hexagon.rotate(sf::degrees(2));
+        circle.rotate(sf::degrees(1));
+        triangle.rotate(sf::degrees(1));
+        hexagon.rotate(sf::degrees(1));
         window.display();
     }
 
