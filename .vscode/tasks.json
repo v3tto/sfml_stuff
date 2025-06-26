@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build SFML app",
+      "type": "shell",
+      "command": "C:\\mingw64\\bin\\g++.exe",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "${file}",
+        "-I", "C:/C++Libraries/SFML-3.0.0/include",
+        "-DSFML_STATIC",
+        "-o", "${fileDirname}\\${fileBasenameNoExtension}.exe",
+        "-L", "C:/C++Libraries/SFML-3.0.0/lib",
+        "-lsfml-graphics-s",
+        "-lsfml-window-s",
+        "-lsfml-system-s",
+        "-lopengl32",
+        "-lfreetype",
+        "-lwinmm",
+        "-lgdi32"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run SFML app",
+      "type": "shell",
+      "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "dependsOn": "Build SFML app",
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      }
+    }
+  ]
+}
