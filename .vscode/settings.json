@@ -1,5 +1,16 @@
 {
     "files.associations": {
-        "optional": "cpp"
+        "optional": "cpp",
+        "atomic": "cpp",
+        "ios": "cpp",
+        "xiosbase": "cpp",
+        "vector": "cpp",
+        "cmath": "cpp",
+        "filesystem": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "system_error": "cpp",
+        "xhash": "cpp",
+        "xstring": "cpp"
     }
 }

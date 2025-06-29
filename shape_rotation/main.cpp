@@ -13,10 +13,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(windowResolution), "shape_rotation", sf::Style::Titlebar | sf::Style::Close, sf::State::Windowed, settings);
     window.setFramerateLimit(60);
 
-    sf::Clock timer;
-    const float interval = 0.01f;
-
-    float radius = 5.f;
+    float radius = 1.f;
     float radius_step = 5.f;
     float theta = 0.f;
     float angle_step = 0.1f;
@@ -33,9 +30,8 @@ int main()
     const int gB = 0;
     const int bB = 0;
 
-
     std::vector<sf::CircleShape> pentagons;
-    const int max_pentagons = 200;
+    const int max_pentagons = 210;
     int pentagons_count = 0;
 
     while (window.isOpen())
@@ -50,7 +46,7 @@ int main()
                 const auto *keyEvent = event->getIf<sf::Event::KeyPressed>();
                 if (keyEvent->code == sf::Keyboard::Key::R)
                 {
-                    radius = 5.f;
+                    radius = 1.f;
                     theta = 0.f;
                     pentagons_count = 0;
                     pentagons.clear();
@@ -59,13 +55,8 @@ int main()
             }
         }
 
-        if (timer.getElapsedTime().asSeconds() >= interval && pentagons_count < max_pentagons)
+        if (pentagons_count < max_pentagons)
         {
-            radius += radius_step;
-            theta += angle_step;
-            pentagons_count++;
-            std::cout << "Total of pentagons rendered: " << pentagons_count << std::endl;
-
             sf::CircleShape pentagon = basePentagon;
             pentagon.setOrigin({radius, radius});
             pentagon.setRadius(radius);
@@ -76,7 +67,11 @@ int main()
             int b = (1 - t) * bA + t * bB;
             pentagon.setOutlineColor(sf::Color(r, g, b));
             pentagons.push_back(pentagon);
-            timer.restart();
+
+            radius += radius_step;
+            theta += angle_step;
+            pentagons_count++;
+            std::cout << "Total of pentagons rendered: " << pentagons_count << std::endl;
         }
 
         window.clear(sf::Color::Black);
