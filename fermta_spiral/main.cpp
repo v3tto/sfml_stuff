@@ -11,7 +11,7 @@ int main()
     const float center_y = windowHeight / 2;
     sf::Vector2u windowResolution = {windowWidth, windowHeight};
     sf::ContextSettings settings;
-    settings.antiAliasingLevel = 0;
+    settings.antiAliasingLevel = 8;
     sf::RenderWindow window(sf::VideoMode(windowResolution), "fermat's spiral", sf::Style::Titlebar | sf::Style::Close, sf::State::Windowed, settings);
     window.setFramerateLimit(60);
 
@@ -20,12 +20,12 @@ int main()
     const float turn = 2 * pi;
     const float max_theta = 60 * turn;
 
-    float shapeRadius = 15.f;
+    float shapeRadius = 5.f;
     float theta = 0.f;
     float angle_step = 0.1f;
-    float spacing = 50.f;
+    float spacing = 60.f;
 
-    sf::CircleShape baseShape(shapeRadius, 6);
+    sf::CircleShape baseShape(shapeRadius, 4);
     baseShape.setOrigin({shapeRadius, shapeRadius});
     baseShape.setFillColor(sf::Color::Transparent);
     baseShape.setOutlineThickness(-1.f);
